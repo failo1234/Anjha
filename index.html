@@ -24,7 +24,7 @@
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             overflow: hidden;
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
         }
 
@@ -119,6 +119,7 @@
             background: white;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             position: relative;
+            line-height: 1.5;
         }
 
         .message.user .message-content {
@@ -199,11 +200,25 @@
             box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
         }
 
+        .question-categories {
+            margin-bottom: 15px;
+        }
+
+        .category-title {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
         .quick-questions {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
-            justify-content: center;
+            margin-bottom: 15px;
         }
 
         .quick-question {
@@ -211,7 +226,7 @@
             border: 1px solid #e2e8f0;
             border-radius: 20px;
             padding: 8px 16px;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
@@ -221,6 +236,22 @@
             background: #4f46e5;
             color: white;
             transform: translateY(-2px);
+        }
+
+        .quick-question.legal {
+            border-color: #dc2626;
+        }
+
+        .quick-question.legal:hover {
+            background: #dc2626;
+        }
+
+        .quick-question.prevention {
+            border-color: #059669;
+        }
+
+        .quick-question.prevention:hover {
+            background: #059669;
         }
 
         .stats-section {
@@ -250,6 +281,16 @@
             text-align: center;
         }
 
+        .legal-warning {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 12px;
+            color: #991b1b;
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -264,7 +305,7 @@
         @media (max-width: 768px) {
             .quick-questions {
                 flex-direction: column;
-                align-items: center;
+                align-items: stretch;
             }
             
             .quick-question {
@@ -282,27 +323,25 @@
     <section class="hero-section">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8">
+                <div class="col-lg-10">
                     <div class="chat-container">
                         <!-- Chat Header -->
                         <div class="chat-header">
                             <div class="bot-avatar pulse">
                                 <img src="https://scontent.flim18-3.fna.fbcdn.net/v/t1.15752-9/506888333_1083112893736118_4666243735717761538_n.jpg?stp=dst-jpg_tt6&cstp=mx512x512&ctp=s512x512&_nc_cat=108&ccb=1-7&_nc_sid=0024fc&_nc_ohc=vqQIWPcjiIEQ7kNvwFaY962&_nc_oc=AdlKc83J3EnGz6daa8cXuqXfz817Rg-AQ6bnasXeow6EaEH-ynq-YZd805W-MDTWq_c&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.flim18-3.fna&oh=03_Q7cD2wFr6XKkTqKGqb2AMWxw2lloCvA8g6Kwe-MzwpPJ_1OSEA&oe=688E9676" alt="BullyBot Avatar">
                             </div>
-                            <h2 class="mb-2">MOGU</h2>
+                            <h2 class="mb-2">BullyBot</h2>
                             <p class="mb-0">Tu asistente especializado contra el bullying</p>
                         </div>
                         
                         <!-- Chat Messages -->
-
-                        
                         <div class="chat-messages" id="chatMessages">
                             <div class="message bot">
                                 <div class="message-avatar">
                                     <i class="fas fa-robot"></i>
                                 </div>
                                 <div class="message-content">
-                                    ¡Hola! Soy MOGU, tu asistente especializado en temas de bullying. Estoy aquí para ayudarte con información, consejos y apoyo. ¿En qué puedo ayudarte hoy?
+                                    ¡Hola! Soy BullyBot, tu asistente especializado en temas de bullying. Estoy aquí para ayudarte con información, consejos, prevención y aspectos legales. ¿En qué puedo ayudarte hoy?
                                 </div>
                             </div>
                         </div>
@@ -325,22 +364,75 @@
                                 </button>
                             </div>
                             
-                            <!-- Quick Questions -->
-                            <div class="quick-questions">
-                                <div class="quick-question" onclick="askQuickQuestion('¿Qué es el bullying?')">
-                                    ¿Qué es el bullying?
+                            <!-- Question Categories -->
+                            <div class="question-categories">
+                                <!-- General Questions -->
+                                <div class="category-title">
+                                    <i class="fas fa-question-circle"></i>
+                                    Preguntas Generales
                                 </div>
-                                <div class="quick-question" onclick="askQuickQuestion('¿Cómo identificar el bullying?')">
-                                    ¿Cómo identificarlo?
+                                <div class="quick-questions">
+                                    <div class="quick-question" onclick="askQuickQuestion('¿Qué es el bullying?')">
+                                        ¿Qué es el bullying?
+                                    </div>
+                                    <div class="quick-question" onclick="askQuickQuestion('¿Cómo identificar el bullying?')">
+                                        ¿Cómo identificarlo?
+                                    </div>
+                                    <div class="quick-question" onclick="askQuickQuestion('¿Qué hacer si sufro bullying?')">
+                                        ¿Qué hacer si lo sufro?
+                                    </div>
+                                    <div class="quick-question" onclick="askQuickQuestion('¿Cómo ayudar a alguien?')">
+                                        ¿Cómo ayudar?
+                                    </div>
+                                    <div class="quick-question" onclick="askQuickQuestion('Tipos de bullying')">
+                                        Tipos de bullying
+                                    </div>
                                 </div>
-                                <div class="quick-question" onclick="askQuickQuestion('¿Qué hacer si sufro bullying?')">
-                                    ¿Qué hacer si lo sufro?
+
+                                <!-- Legal Questions -->
+                                <div class="category-title">
+                                    <i class="fas fa-balance-scale"></i>
+                                    Aspectos Legales
                                 </div>
-                                <div class="quick-question" onclick="askQuickQuestion('¿Cómo ayudar a alguien?')">
-                                    ¿Cómo ayudar?
+                                <div class="quick-questions">
+                                    <div class="quick-question legal" onclick="askQuickQuestion('¿Es el bullying un delito?')">
+                                        ¿Es el bullying un delito?
+                                    </div>
+                                    <div class="quick-question legal" onclick="askQuickQuestion('¿Qué leyes protegen contra el bullying?')">
+                                        ¿Qué leyes me protegen?
+                                    </div>
+                                    <div class="quick-question legal" onclick="askQuickQuestion('¿Cómo denunciar bullying legalmente?')">
+                                        ¿Cómo denunciar?
+                                    </div>
+                                    <div class="quick-question legal" onclick="askQuickQuestion('¿Qué responsabilidades tienen las escuelas?')">
+                                        Responsabilidad escolar
+                                    </div>
+                                    <div class="quick-question legal" onclick="askQuickQuestion('¿Qué evidencia necesito para denunciar?')">
+                                        Evidencia necesaria
+                                    </div>
                                 </div>
-                                <div class="quick-question" onclick="askQuickQuestion('Tipos de bullying')">
-                                    Tipos de bullying
+
+                                <!-- Prevention Questions -->
+                                <div class="category-title">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Prevención y Consejos
+                                </div>
+                                <div class="quick-questions">
+                                    <div class="quick-question prevention" onclick="askQuickQuestion('¿Cómo prevenir el bullying?')">
+                                        ¿Cómo prevenir el bullying?
+                                    </div>
+                                    <div class="quick-question prevention" onclick="askQuickQuestion('Consejos para ser más seguro')">
+                                        Consejos de seguridad
+                                    </div>
+                                    <div class="quick-question prevention" onclick="askQuickQuestion('¿Cómo mejorar mi autoestima?')">
+                                        Mejorar autoestima
+                                    </div>
+                                    <div class="quick-question prevention" onclick="askQuickQuestion('¿Cómo hacer amigos verdaderos?')">
+                                        Hacer amigos
+                                    </div>
+                                    <div class="quick-question prevention" onclick="askQuickQuestion('¿Cómo actuar con confianza?')">
+                                        Actuar con confianza
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -349,22 +441,28 @@
                     <!-- Stats Section -->
                     <div class="stats-section">
                         <div class="row text-center">
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="stat-item">
                                     <span class="stat-number">85%</span>
                                     <span class="stat-label">Casos resueltos con ayuda</span>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="stat-item">
                                     <span class="stat-number">24/7</span>
                                     <span class="stat-label">Apoyo disponible</span>
                                 </div>
                             </div>
-                            <div class="col-4">
+                            <div class="col-3">
                                 <div class="stat-item">
                                     <span class="stat-number">1000+</span>
                                     <span class="stat-label">Personas ayudadas</span>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="stat-item">
+                                    <span class="stat-number">95%</span>
+                                    <span class="stat-label">Prevención exitosa</span>
                                 </div>
                             </div>
                         </div>
@@ -418,7 +516,7 @@
             
             const contentDiv = document.createElement('div');
             contentDiv.className = 'message-content';
-            contentDiv.textContent = text;
+            contentDiv.innerHTML = text;
             
             if (sender === 'user') {
                 messageDiv.appendChild(contentDiv);
@@ -443,11 +541,26 @@
 
         function getBotResponse(message) {
             const responses = {
-                '¿qué es el bullying?': 'El bullying es un comportamiento agresivo repetitivo que involucra un desequilibrio de poder. Puede ser físico, verbal, social o cibernético.',
-                '¿cómo identificar el bullying?': 'Señales incluyen: cambios en el comportamiento, lesiones inexplicables, pérdida de amigos, evitar actividades escolares, y cambios en el rendimiento académico.',
-                '¿qué hacer si sufro bullying?': 'Es importante hablar con un adulto de confianza, documentar los incidentes, no responder con agresión, y buscar apoyo de amigos y familia.',
-                '¿cómo ayudar a alguien?': 'Puedes ayudar siendo un buen amigo, reportando el bullying, no participando en él, y apoyando a la víctima emocionalmente.',
-                'tipos de bullying': 'Existen varios tipos: físico (golpes, empujones), verbal (insultos, burlas), social (exclusión, rumores), y ciberbullying (acoso en línea).'
+                // Preguntas generales
+                '¿qué es el bullying?': 'El bullying es un comportamiento agresivo repetitivo que involucra un desequilibrio de poder. Puede ser físico, verbal, social o cibernético. Se caracteriza por la intención de causar daño y la repetición del comportamiento.',
+                '¿cómo identificar el bullying?': 'Señales incluyen: cambios en el comportamiento, lesiones inexplicables, pérdida de amigos, evitar actividades escolares, cambios en el rendimiento académico, pesadillas, pérdida de apetito y comportamiento agresivo.',
+                '¿qué hacer si sufro bullying?': 'Es importante: 1) Hablar con un adulto de confianza, 2) Documentar los incidentes, 3) No responder con agresión, 4) Buscar apoyo de amigos y familia, 5) Reportar a las autoridades escolares.',
+                '¿cómo ayudar a alguien?': 'Puedes ayudar: 1) Siendo un buen amigo, 2) Reportando el bullying, 3) No participando en él, 4) Apoyando a la víctima emocionalmente, 5) Involucrando a adultos responsables.',
+                'tipos de bullying': 'Existen varios tipos: <br><strong>Físico:</strong> golpes, empujones<br><strong>Verbal:</strong> insultos, burlas<br><strong>Social:</strong> exclusión, rumores<br><strong>Ciberbullying:</strong> acoso en línea',
+                
+                // Preguntas legales
+                '¿es el bullying un delito?': 'El bullying puede constituir varios delitos según la legislación local: lesiones, amenazas, acoso, daños psicológicos. En muchos países, existe legislación específica anti-bullying en centros educativos.<div class="legal-warning">⚠️ Consulta siempre con un abogado para casos específicos.</div>',
+                '¿qué leyes protegen contra el bullying?': 'Las leyes varían por país, pero generalmente incluyen: <br>• Leyes de protección infantil<br>• Códigos penales (lesiones, amenazas)<br>• Leyes educativas anti-bullying<br>• Normativas de protección de datos (ciberbullying)<div class="legal-warning">⚠️ Consulta la legislación específica de tu país.</div>',
+                '¿cómo denunciar bullying legalmente?': 'Pasos para denunciar: <br>1) Documentar todos los incidentes<br>2) Reportar a la escuela primero<br>3) Presentar denuncia policial si es necesario<br>4) Buscar asesoría legal<br>5) Considerar medidas de protección<div class="legal-warning">⚠️ Guarda todas las evidencias: fotos, mensajes, testimonios.</div>',
+                '¿qué responsabilidades tienen las escuelas?': 'Las escuelas tienen obligaciones legales: <br>• Prevenir el bullying<br>• Investigar denuncias<br>• Tomar medidas correctivas<br>• Proteger a las víctimas<br>• Notificar a autoridades en casos graves<div class="legal-warning">⚠️ Si la escuela no actúa, puedes escalar a autoridades educativas.</div>',
+                '¿qué evidencia necesito para denunciar?': 'Evidencia importante: <br>• Fotos de lesiones o daños<br>• Capturas de pantalla de mensajes<br>• Grabaciones (donde sea legal)<br>• Testimonios de testigos<br>• Registros médicos<br>• Comunicaciones con la escuela<div class="legal-warning">⚠️ Documenta fecha, hora y lugar de cada incidente.</div>',
+                
+                // Preguntas de prevención
+                '¿cómo prevenir el bullying?': 'Estrategias de prevención: <br>• Desarrolla confianza en ti mismo<br>• Mantén buenas relaciones sociales<br>• Aprende técnicas de asertividad<br>• Evita situaciones de riesgo<br>• Busca apoyo de adultos<br>• Practica deportes o actividades grupales',
+                'consejos para ser más seguro': 'Consejos de seguridad: <br>• Camina con confianza<br>• Mantén contacto visual<br>• Evita estar solo en lugares aislados<br>• Informa tu ubicación a familiares<br>• Aprende a decir "NO" firmemente<br>• Confía en tus instintos',
+                '¿cómo mejorar mi autoestima?': 'Para mejorar tu autoestima: <br>• Reconoce tus fortalezas<br>• Establece metas alcanzables<br>• Practica el autocuidado<br>• Rodéate de personas positivas<br>• Celebra tus logros<br>• Busca ayuda profesional si es necesario',
+                '¿cómo hacer amigos verdaderos?': 'Para hacer amigos genuinos: <br>• Sé tú mismo/a<br>• Muestra interés genuino en otros<br>• Participa en actividades que te gusten<br>• Sé leal y confiable<br>• Practica la empatía<br>• Mantén comunicación abierta',
+                '¿cómo actuar con confianza?': 'Para actuar con confianza: <br>• Mantén buena postura<br>• Habla con voz clara y firme<br>• Haz contacto visual<br>• Respira profundamente<br>• Prepárate mentalmente<br>• Practica situaciones difíciles'
             };
             
             const normalizedMessage = message.toLowerCase();
@@ -457,7 +570,16 @@
                 }
             }
             
-            return 'Entiendo tu preocupación. El bullying es un tema serio y estoy aquí para ayudarte. ¿Podrías contarme más detalles sobre tu situación?';
+            // Respuestas por categoría
+            if (normalizedMessage.includes('legal') || normalizedMessage.includes('ley') || normalizedMessage.includes('denunci')) {
+                return 'Entiendo que necesitas información legal sobre bullying. Te recomiendo hablar con un abogado especializado en derecho educativo o familiar para tu caso específico. ¿Hay algún aspecto legal particular que te preocupe?<div class="legal-warning">⚠️ Esta información es general y no constituye asesoría legal.</div>';
+            }
+            
+            if (normalizedMessage.includes('prevenir') || normalizedMessage.includes('evitar') || normalizedMessage.includes('proteger')) {
+                return 'La prevención del bullying es fundamental. Algunas estrategias incluyen desarrollar habilidades sociales, mantener comunicación abierta con adultos de confianza, y crear redes de apoyo. ¿Te gustaría que profundice en algún aspecto específico de la prevención?';
+            }
+            
+            return 'Entiendo tu preocupación. El bullying es un tema serio y estoy aquí para ayudarte con información general, legal y consejos de prevención. ¿Podrías contarme más detalles sobre tu situación o qué tipo de información necesitas?';
         }
     </script>
 </body>
